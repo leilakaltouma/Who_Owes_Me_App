@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>WHO OWES ME</h1>
+    <ul class="allNames">
+        <% for(let i = 0; i < names.length; i++) {%>
+            <li class="<%= names[i].paid ? 'item paid' : 'item' %>">
+                <span class='name'><%= names[i].name %></span>
+                <span class="name "><%= names[i].amount %></span>
+                <span class="name"><%= names[i].date %></span>
+                <% if (names[i].paid) { %>
+                    <button class="markUnpaid">Unpaid</button>
+                <%} else { %>
+                    <button class="markPaid">paid</button>
+                <% } %>
+                    <span class='fa fa-trash'></span>
+            </li>
+        <% } %>
+        </ul>
+    
+    
+        <h2>Add A Name:</h2>
+    
+        <form action="/add" method="POST">
+            <input type="text" placeholder="Name" name="name">
+            <input type="text" placeholder="Amount"name="amount">
+            <input type="text" placeholder="Date" name="date">
+            <input type="submit">
+        </form>
+        
+    
+        <script src='/main.js'></script>
+</body>
+</html>
